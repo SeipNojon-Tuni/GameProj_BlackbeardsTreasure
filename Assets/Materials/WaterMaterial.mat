@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: WaterMaterial
-  m_Shader: {fileID: -6465566751694194690, guid: 028ed70c99032da43b51ef5e72b34fba,
+  m_Shader: {fileID: -6465566751694194690, guid: bc8e313131b2eff4fa4c593efa16e7fd,
     type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
@@ -20,5 +20,14 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs: []
-    m_Floats: []
-    m_Colors: []
+    m_Floats:
+    - Vector1_1085F209: 6
+    - Vector1_348A1282: 0.8
+    - Vector1_79E58053: 0.1
+    - Vector1_922A92F6: 1.5
+    - Vector1_E21611A9: 6
+    - Vector1_F5CE646C: 0.7
+    m_Colors:
+    - Color_1265FB43: {r: 0, g: 0.35314628, b: 0.6415094, a: 0}
+    - Color_48597039: {r: 0, g: 0.1060887, b: 0.3962264, a: 0}
+    - Color_B1151240: {r: 0.04271982, g: 0.5983011, b: 1.811321, a: 0}
