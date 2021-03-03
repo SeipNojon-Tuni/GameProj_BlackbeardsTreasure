@@ -6,6 +6,7 @@ public class Tykki : MonoBehaviour
 {
     private Camera cam;
     public Rigidbody pallo;
+    public float vel_mult;
     private float diffx;
     private float diffy;
     private float x;
@@ -13,7 +14,11 @@ public class Tykki : MonoBehaviour
     private float kulma;
     private float distance;
     void Start()
-    { cam =Camera.main;}
+    { cam =Camera.main;
+        if (vel_mult == 0) {
+            vel_mult = 5000;
+        }
+    }
     void Update()
     {
     Vector2 mousePos = new Vector2();
@@ -31,7 +36,7 @@ public class Tykki : MonoBehaviour
        y=Mathf.Sin((kulma));
        Rigidbody clone;
         clone = Instantiate(pallo, transform.position, new Quaternion(0, 0 , 0, 1));
-        clone.AddRelativeForce(new Vector3(x,0,y) * 1000);
+        clone.AddRelativeForce(new Vector3(x,0,y) * vel_mult);
         }
     }
 }
