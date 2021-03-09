@@ -18,7 +18,6 @@ public class Floater : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
     }
 
     // Update is called once per frame
@@ -30,7 +29,6 @@ public class Floater : MonoBehaviour
         }
         else {
             water_level = manager.getLevel(new Vector2(transform.position.x, transform.position.z)) + level_offset;
-            Debug.Log("Using wave manager, water level " + water_level);
         }
 
         rigidBody.AddForceAtPosition(Physics.gravity / floaterCount, transform.position, ForceMode.Acceleration);

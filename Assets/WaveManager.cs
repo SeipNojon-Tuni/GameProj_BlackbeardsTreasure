@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class WaveManager : MonoBehaviour
-{       
+{   
     public float water_level;
     private float noise = 0.0f;
     private Vector2 uv;

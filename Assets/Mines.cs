@@ -49,7 +49,7 @@ public class Mines : MonoBehaviour
         float z_off = Random.Range(-10.0f, 10.0f);
 
         Rigidbody clone;
-        Vector3 pos = transform.position -15*transform.forward;
+        Vector3 pos = transform.position -20*transform.forward;
 
         clone = Instantiate(pallo, pos, new Quaternion(0, 0 , 0, 1));
         clone.AddRelativeForce(-transform.forward*vel_mult);

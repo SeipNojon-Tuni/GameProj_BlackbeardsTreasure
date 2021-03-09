@@ -7,10 +7,12 @@ public class ShipRigid : MonoBehaviour
     public Rigidbody rigidBody;
     public float playerSpeed;
     public float turn_rate;
+    private float mass;
 
     // Start is called before the first frame update
     void Start()
-    {
+    {   
+        mass = GetComponent<Rigidbody>().mass;
 
         // Basic turnrate to 20.
         if (turn_rate == 0.0f) {
@@ -28,6 +30,7 @@ public class ShipRigid : MonoBehaviour
         transform.Rotate(0,Input.GetAxis("Horizontal")*turn_rate*Time.deltaTime,0);
         Vector3 move = new Vector3(0, 0, Input.GetAxis("Vertical"));
         move = transform.TransformDirection(move);
-        rigidBody.AddForce(move * Time.deltaTime * playerSpeed);
+        move.y = 0; // Disable vertical acceleration to avoid flying.
+        rigidBody.AddForce(move * Time.deltaTime * playerSpeed * mass);
     }
 }

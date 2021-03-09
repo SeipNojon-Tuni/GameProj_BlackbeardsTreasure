@@ -10,6 +10,7 @@ public class Barrage : MonoBehaviour
     public float reload_time;
     public AudioClip sound;
     public AudioSource auso;  
+    public float x_offset = 15;
 
     private float diffx;
     private float diffy;
@@ -89,11 +90,14 @@ public class Barrage : MonoBehaviour
         float z_off = Random.Range(-10.0f, 10.0f);
 
         Rigidbody clone;
-        Vector3 offset = new Vector3 (0, 0, z_off);
-        Vector3 pos = transform.position + offset;
+
+        float x_off = Mathf.Sign(x) * x_offset;
+
+        Vector3 offset = new Vector3 (x_off, 0, z_off);
+        Vector3 pos = transform.position + transform.TransformDirection(offset);
 
         clone = Instantiate(pallo, pos, new Quaternion(0, 0 , 0, 1));
-        clone.AddRelativeForce(new Vector3(x,0,y) * vel_mult);
+        clone.AddRelativeForce(new Vector3(x,0,y) * vel_mult * clone.mass);
 
     }
     void SetReloaded() {

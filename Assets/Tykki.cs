@@ -49,8 +49,8 @@ public class Tykki : MonoBehaviour
             x=Mathf.Cos((kulma));
             y=Mathf.Sin((kulma));
             Rigidbody clone;
-            clone = Instantiate(pallo, transform.position, new Quaternion(0, 0 , 0, 1));
-            clone.AddRelativeForce(new Vector3(x,0,y) * vel_mult);
+            clone = Instantiate(pallo, transform.position + transform.TransformDirection(new Vector3(0, 7, 15)), new Quaternion(0, 0 , 0, 1));
+            clone.AddRelativeForce(new Vector3(x,0,y) * vel_mult * clone.mass);
 
             // Set reloaded after delay.
             Invoke("SetReloaded", reload_time);

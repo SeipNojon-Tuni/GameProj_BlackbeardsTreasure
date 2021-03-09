@@ -14,7 +14,7 @@ public class SailManager : MonoBehaviour
     void Start()
     {   
         last_pos = transform.position;
-        sails = GetComponents<Cloth>();
+        sails = GetComponentsInChildren<Cloth>();
 
         // Default sail acceleration
         if (sail_acc == 0) {
@@ -30,8 +30,7 @@ public class SailManager : MonoBehaviour
         // If ship moved, move sails.
         if ( new_pos != last_pos ) {
             foreach (Cloth sail in sails) {
-                sail.externalAcceleration = new Vector3(0, 0, sail_acc);
-                Debug.Log("Moving");
+                sail.externalAcceleration = transform.forward * sail_acc;
             }
         }
         else {
