@@ -257,6 +257,13 @@ GameObject:
   - component: {fileID: 7874524093053901996}
   - component: {fileID: 2582576133579989848}
   - component: {fileID: 1965741846511437213}
+  - component: {fileID: 1784683084}
+  - component: {fileID: 1784683085}
+  - component: {fileID: 1784683086}
+  - component: {fileID: 1784683087}
+  - component: {fileID: 1784683088}
+  - component: {fileID: 1784683090}
+  - component: {fileID: 3574797585128405756}
   m_Layer: 0
   m_Name: Cannon_boat_physics
   m_TagString: Ship
@@ -272,7 +279,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3552767224761659886}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -124.67898, y: 103.5, z: 178.2}
+  m_LocalPosition: {x: -129.3, y: 10, z: 151.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1024075093943831479}
@@ -304,9 +311,9 @@ Rigidbody:
   m_GameObject: {fileID: 3552767224761659886}
   serializedVersion: 2
   m_Mass: 200
-  m_Drag: 0.7
+  m_Drag: 0.6
   m_AngularDrag: 0.5
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
@@ -462,6 +469,121 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   debris: {fileID: 9038869609767881506}
   flames: {fileID: 4226444282921690166}
+--- !u!114 &1784683084
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3552767224761659886}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a216dfdd791401043a91fbc441462458, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerSpeed: 60
+  turn_rate: 30
+--- !u!114 &1784683085
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3552767224761659886}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1b958cbc81694a429ca117c007e13f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pallo: {fileID: 0}
+  vel_mult: 0
+  reload_time: 3
+  sound: {fileID: 8300000, guid: 8dca5262d14d46e4d848815cc7bd8be8, type: 3}
+  auso: {fileID: 2028063751619820225}
+--- !u!114 &1784683086
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3552767224761659886}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e320f74c954567d46b74a6812f5040ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pallo: {fileID: 177192772980760049, guid: 5503f0d3811d43848ad3c567bc0a2abe, type: 3}
+  vel_mult: 0
+  reload_time: 0
+  sound: {fileID: 8300000, guid: dd16613ba69286a49828cc208cf79d3e, type: 3}
+  auso: {fileID: 2028063751619820225}
+--- !u!114 &1784683087
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3552767224761659886}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 753bc69d4448d9d47a7d22c4fe82388c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rigidBody: {fileID: 4348229228908268112}
+  manager: {fileID: 1784683090}
+  depthBeforeSub: 1
+  dispAmo: 3
+  level: 0
+  level_offset: 8.5
+  floaterCount: 12
+  waterDrag: 0.99
+  waterAngularDrag: 0.5
+--- !u!114 &1784683088
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3552767224761659886}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d11785955ec48104fa09ff4c39f05332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rigidBody: {fileID: 4348229228908268112}
+  playerSpeed: 1
+  turn_rate: 30
+--- !u!114 &1784683090
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3552767224761659886}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 186b7b78b77ae334da0bb68aa262c1c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  water_level: 0
+  WaveAmplitude: 5
+--- !u!114 &3574797585128405756
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3552767224761659886}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b91ecbcc199f4492b9a91e820070131, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneId: 0
+  serverOnly: 0
+  visible: 0
+  m_AssetId: 
+  hasSpawned: 0
 --- !u!1 &4132565364087423832
 GameObject:
   m_ObjectHideFlags: 0
@@ -555,7 +677,7 @@ GameObject:
   - component: {fileID: 6180259073359916854}
   m_Layer: 0
   m_Name: Camera
-  m_TagString: MainCamera
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -667,7 +789,7 @@ GameObject:
   - component: {fileID: 4476361580584605885}
   - component: {fileID: 2028063751619820225}
   m_Layer: 0
-  m_Name: Audio Source Boat
+  m_Name: AudioSource
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
