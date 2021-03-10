@@ -20,11 +20,11 @@ public class DamageValues : MonoBehaviour
     }
 
     public float getDamage() {
-        return Random.Range(0.0f, 1.0f) * max_damage;
+        return Random.Range(0.7f, 1.0f) * max_damage;
     }
 
     public float getDuration() {
         // No tick amount for single instance damage.
-        return Mathf.Floor(Random.Range(0.4f, 1.0f) * duration); // Duration of 1 will result in 0.
+        return Mathf.Floor(Random.Range(0.6f, 1.0f) * duration); // Duration of 1 will result in 0.
     }
 }

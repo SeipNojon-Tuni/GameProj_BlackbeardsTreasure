@@ -34,26 +34,30 @@ public class ShipVisualEffects : MonoBehaviour
     // Play effect of debris flying around because of cannon ball hit.
     public void playFlyingDebris(float dur = 0.5f) 
     {   
-        debris.Stop();
-        var durvar = debris.main.duration;
-        durvar = dur;
+        debris.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
+        ParticleSystem.MainModule module = debris.main;
+        module.duration = dur;
         debris.Play();
 
         
     }
 
+    public void stopFlyingDebris() {
+        debris.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
+    }
+
     // Play effect of fire burning on ship.
-    public void playShipBurning(float dur) 
+    public void playShipBurning(float dur = 1) 
     {   
-        flames.Stop();
-        var durvar = flames.main.duration;
-        durvar = dur;
+        flames.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
+        ParticleSystem.MainModule module = flames.main;
+        module.duration = dur;
         flames.Play();
     }
 
     public void stopShipBurning() 
     {   
-        flames.Stop();
+        flames.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
     }
 
 }

@@ -143,7 +143,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 582bbc1c62d0d8f41b973576bd5936a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  duration: 5
+  duration: 8
   max_damage: -1
 --- !u!114 &3750524052706021061
 MonoBehaviour:
@@ -157,6 +157,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ecda65417c5770841bceb433b4cc7842, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sound: {fileID: 0}
+  explosion: {fileID: 0}
 --- !u!135 &8683014658942774808
 SphereCollider:
   m_ObjectHideFlags: 0

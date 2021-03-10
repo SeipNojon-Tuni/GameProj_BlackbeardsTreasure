@@ -9,11 +9,25 @@ public class ShipHealth : MonoBehaviour
     private float dot_duration = 0.0f;
     private float dot_mod = 1.0f; // Basic damage over time 1/s;
     public ShipVisualEffects effects;
+    public int respawn_time = 5;
+
+    private Vector3 spawn_point;
+    private Quaternion orig_rot;
+    private float orig_mass;
+    private Rigidbody rig;
+    private bool dead = false;
 
     // Start is called before the first frame update
     void Start()
     {
         current_health = baseHealth;
+        rig = gameObject.GetComponent<Rigidbody>();
+        orig_mass = rig.mass;
+
+        // Get spawn point
+        spawn_point = transform.position;
+        orig_rot = transform.rotation;
+
     }
 
     // Update is called once per frame.
@@ -21,12 +35,12 @@ public class ShipHealth : MonoBehaviour
     {
         // If uncalculated damage ticks remain take damage.
         if (dot_duration > 0) {
-            StartCoroutine("takeDmgOverTime");
-            effects.playShipBurning(dot_duration);
+            StartCoroutine(takeDmgOverTime());
         }
 
-        if (current_health <= 0) {
-            commitDie();
+        if (current_health <= 0 && !dead) {
+            dead = true;
+            StartCoroutine(commitDie());
         }
 
     }
@@ -36,14 +50,29 @@ public class ShipHealth : MonoBehaviour
         return current_health;
     }
 
-    void commitDie() {
-        /* === PLACE HOLDER DEATH EVENT ===
-         *  Replace with something that enables
-         *  respawning etc.
-         */
+    IEnumerator commitDie() {
+        // Don't have several deaths running at a time.
+        dead = true;
 
-        Rigidbody rig = gameObject.GetComponent<Rigidbody>();
+        rig.AddForce(new Vector3(0, -1500, 0));
 
+        // Wait for ship to respawn.
+        yield return new WaitForSeconds(respawn_time);
+
+        // Move to spawn.
+        transform.position = spawn_point;
+        transform.rotation = Quaternion.Euler(0, 0, 0);
+
+        // Reset dmg animations.
+        effects.stopShipBurning();
+        effects.stopFlyingDebris();
+
+        // Reset velocity and health.
+        current_health = baseHealth;
+        rig.velocity = Vector3.zero;
+        rig.angularVelocity = Vector3.zero;
+
+        dead = false;
     }
 
     // Take basic damage instance.
@@ -53,10 +82,11 @@ public class ShipHealth : MonoBehaviour
     }
 
     IEnumerator takeDmgOverTime() 
-    {
-        for (float ft = dot_duration; ft >= 0; ft -= 0.2f) 
-        {
-            modifyHealth(0.2f * dot_mod); // Dot mod remains dmg/s ticks every .2 seconds
+    {   
+        for (float ft = 0; ft < dot_duration; ft += 0.2f) 
+        {   
+            float amo = 0.2f * dot_mod;
+            modifyHealth(amo); // Dot mod remains dmg/s ticks every .2 seconds
             yield return new WaitForSeconds(.2f); // Tick damage every .2 seconds
         }
 
@@ -80,14 +110,14 @@ public class ShipHealth : MonoBehaviour
         float duration = dmgVals.getDuration();
         float magnitude = dmgVals.getDamage();
 
-        Debug.Log(duration + " " + magnitude);
-
         // Play hit effect.
         effects.playFlyingDebris();
 
         // Determine is this single instance or damage over time.
-        if (duration > 1) {
-            dmgOverTime(duration, magnitude);
+        if (duration >= 1) {
+            dmgOverTime(duration, magnitude); 
+            effects.playShipBurning(duration);
+            Debug.Log("Flames duration" + duration);
         }
         else {
             modifyHealth(magnitude);
