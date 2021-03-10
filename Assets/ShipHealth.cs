@@ -14,14 +14,18 @@ public class ShipHealth : MonoBehaviour
     private Vector3 spawn_point;
     private Quaternion orig_rot;
     private float orig_mass;
+    private Floater floater;
     private Rigidbody rig;
     private bool dead = false;
+    private Animator anim_control;
 
     // Start is called before the first frame update
     void Start()
     {
         current_health = baseHealth;
-        rig = gameObject.GetComponent<Rigidbody>();
+        rig = GetComponent<Rigidbody>();
+        floater = gameObject.GetComponent<Floater>();
+        anim_control = gameObject.GetComponent<Animator>();
         orig_mass = rig.mass;
 
         // Get spawn point
@@ -54,7 +58,12 @@ public class ShipHealth : MonoBehaviour
         // Don't have several deaths running at a time.
         dead = true;
 
-        rig.AddForce(new Vector3(0, -1500, 0));
+        // Sink ship
+        float offset = floater.level_offset;
+        Debug.Log(floater.level_offset);
+
+        // Play sinking animation.
+        anim_control.SetInteger("isSinking", 1);
 
         // Wait for ship to respawn.
         yield return new WaitForSeconds(respawn_time);
@@ -68,9 +77,12 @@ public class ShipHealth : MonoBehaviour
         effects.stopFlyingDebris();
 
         // Reset velocity and health.
+        
+        anim_control.SetInteger("isSinking", 0);
         current_health = baseHealth;
         rig.velocity = Vector3.zero;
         rig.angularVelocity = Vector3.zero;
+        floater.level_offset = offset;
 
         dead = false;
     }
@@ -117,7 +129,6 @@ public class ShipHealth : MonoBehaviour
         if (duration >= 1) {
             dmgOverTime(duration, magnitude); 
             effects.playShipBurning(duration);
-            Debug.Log("Flames duration" + duration);
         }
         else {
             modifyHealth(magnitude);

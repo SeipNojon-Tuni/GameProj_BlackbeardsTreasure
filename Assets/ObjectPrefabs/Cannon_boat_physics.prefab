@@ -254,9 +254,9 @@ GameObject:
   - component: {fileID: 1194113233606378557}
   - component: {fileID: 5858180617533383006}
   - component: {fileID: 3438265907631693724}
-  - component: {fileID: 7874524093053901996}
   - component: {fileID: 2582576133579989848}
   - component: {fileID: 1965741846511437213}
+  - component: {fileID: 1949911743722061875}
   m_Layer: 0
   m_Name: Cannon_boat_physics
   m_TagString: Ship
@@ -325,6 +325,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   baseHealth: 100
   effects: {fileID: 1965741846511437213}
+  respawn_time: 5
 --- !u!114 &5364602554464077335
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -421,19 +422,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 11.728821, y: 16.499039, z: 5.644562}
   m_Center: {x: 2.6187286, y: 10.603233, z: 2.322281}
---- !u!114 &7874524093053901996
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3552767224761659886}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bd717f82164ee174a8dc543c68e05ea7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sail_acc: 250
 --- !u!114 &2582576133579989848
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -462,6 +450,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   debris: {fileID: 9038869609767881506}
   flames: {fileID: 4226444282921690166}
+--- !u!95 &1949911743722061875
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3552767224761659886}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 49c808c3b055452408f985c0626d5ec4, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &4132565364087423832
 GameObject:
   m_ObjectHideFlags: 0
@@ -6277,8 +6284,8 @@ Cloth:
   m_Damping: 0
   m_ExternalAcceleration: {x: 0, y: 0, z: 0}
   m_RandomAcceleration: {x: 0, y: 0, z: 0}
-  m_WorldVelocityScale: 0.5
-  m_WorldAccelerationScale: 1
+  m_WorldVelocityScale: -0.5
+  m_WorldAccelerationScale: -1
   m_Friction: 0.5
   m_CollisionMassScale: 0
   m_UseContinuousCollision: 1
