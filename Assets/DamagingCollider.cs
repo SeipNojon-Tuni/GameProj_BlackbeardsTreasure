@@ -14,7 +14,6 @@ public class DamagingCollider : MonoBehaviour
     {
         // Destroy projectiles after time
         Destroy(gameObject, 25);
-        Debug.Log("name " + this.name);
     }
 
     // Update is called once per frame

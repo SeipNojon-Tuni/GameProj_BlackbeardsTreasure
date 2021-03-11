@@ -18,6 +18,9 @@ public class ShipHealth : MonoBehaviour
     private Rigidbody rig;
     private bool dead = false;
     private Animator anim_control;
+    private ShipRigid controlScript;
+    private float timeSpan = 1.0f;
+    private float time = 0.0f;
 
     // Start is called before the first frame update
     void Start()
@@ -27,6 +30,7 @@ public class ShipHealth : MonoBehaviour
         floater = gameObject.GetComponent<Floater>();
         anim_control = gameObject.GetComponent<Animator>();
         orig_mass = rig.mass;
+        controlScript = GetComponent<ShipRigid>();
 
         // Get spawn point
         spawn_point = transform.position;
@@ -47,6 +51,22 @@ public class ShipHealth : MonoBehaviour
             StartCoroutine(commitDie());
         }
 
+
+        // Hold R to die and respawn
+        if (Input.GetKey(KeyCode.R) && !dead) {
+            time += Time.deltaTime;
+        }
+        if(time > timeSpan && !dead) {
+            dead = true;
+            StartCoroutine(commitDie());
+            time = 0.0f;
+        }
+
+        // Button released
+        if (Input.GetKeyUp(KeyCode.R)) {
+            time = 0.0f;
+        }
+
     }
 
     // Get ship health
@@ -60,17 +80,24 @@ public class ShipHealth : MonoBehaviour
 
         // Sink ship
         float offset = floater.level_offset;
-        Debug.Log(floater.level_offset);
+
+        // Disable movement during spawning
+        controlScript.canMove = false;
 
         // Play sinking animation.
         anim_control.SetInteger("isSinking", 1);
-
+        
         // Wait for ship to respawn.
         yield return new WaitForSeconds(respawn_time);
+        
+        anim_control.SetInteger("isSinking", 0);
+
+        // Wait transition
+        yield return new WaitForSeconds(0.1f);
 
         // Move to spawn.
+        rig.isKinematic = true;
         transform.position = spawn_point;
-        transform.rotation = Quaternion.Euler(0, 0, 0);
 
         // Reset dmg animations.
         effects.stopShipBurning();
@@ -78,11 +105,15 @@ public class ShipHealth : MonoBehaviour
 
         // Reset velocity and health.
         
-        anim_control.SetInteger("isSinking", 0);
         current_health = baseHealth;
+        floater.level_offset = offset;
         rig.velocity = Vector3.zero;
         rig.angularVelocity = Vector3.zero;
-        floater.level_offset = offset;
+
+        transform.rotation = Quaternion.Euler(0, 0, 0);
+        rig.isKinematic = false;
+
+        controlScript.canMove = true;
 
         dead = false;
     }

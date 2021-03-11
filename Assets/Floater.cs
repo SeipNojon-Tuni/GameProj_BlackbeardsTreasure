@@ -8,7 +8,7 @@ public class Floater : MonoBehaviour
     public WaveManager manager;
     public float depthBeforeSub = 1f;
     public float dispAmo = 3f;
-    private float water_level = 0;
+    public float water_level = 0;
     public float level = 15;
     public float level_offset = 1f;
     public int floaterCount = 1;

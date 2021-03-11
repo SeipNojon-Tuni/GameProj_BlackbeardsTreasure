@@ -44,6 +44,9 @@ public class Barrage : MonoBehaviour
     }
     void Update()
     {
+    // Check camera every update.
+    cam =Camera.main;
+
     Vector2 mousePos = new Vector2();
     // Primary fire
     if (Input.GetButtonDown("Fire1"))
@@ -69,14 +72,6 @@ public class Barrage : MonoBehaviour
                     
                     float time = i*0.2f;
 
-                    
-                    // Positive x for right side, negative for left.
-                    if (x > 0 ) {
-                        smoke_right.Play();                         
-                    }
-                    else {
-                        smoke_left.Play();
-                    }
 
                     Invoke("ExecuteAfterTime", time);
                 }
@@ -91,7 +86,21 @@ public class Barrage : MonoBehaviour
 
         Rigidbody clone;
 
-        float x_off = Mathf.Sign(x) * x_offset;
+        float x_off = 0;
+
+        Vector3 left = transform.TransformDirection( new Vector3(-x_offset, 0, 0) ) - new Vector3(x, 0, y);
+        Vector3 right = transform.TransformDirection( new Vector3(x_offset, 0, 0) ) - new Vector3(x, 0, y);
+        
+        // Get which side of the ship is firing.
+        if ( left.magnitude < right.magnitude ) {
+            x_off = -1 * x_offset;
+            smoke_left.Play();
+        }
+        else {
+            x_off = x_offset;
+            smoke_right.Play();
+        }
+
 
         Vector3 offset = new Vector3 (x_off, 0, z_off);
         Vector3 pos = transform.position + transform.TransformDirection(offset);

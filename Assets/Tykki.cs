@@ -28,6 +28,10 @@ public class Tykki : MonoBehaviour
     }
     void Update()
     {
+
+    // Check camera every update if it changes.
+    cam =Camera.main;
+
     Vector2 mousePos = new Vector2();
     if (Input.GetButtonDown("Fire1"))
         {
