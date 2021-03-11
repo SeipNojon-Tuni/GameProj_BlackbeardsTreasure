@@ -459,8 +459,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 163.32, y: -187.4}
-  m_SizeDelta: {x: 326.64636, y: 490.1985}
+  m_AnchoredPosition: {x: 163.32, y: -227.09}
+  m_SizeDelta: {x: 326.64636, y: 569.5746}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &892048745
 MonoBehaviour:
@@ -475,7 +475,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.792102, b: 0, a: 1}
+  m_Color: {r: 0.6226415, g: 0, b: 0.036357608, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -484,7 +484,7 @@ MonoBehaviour:
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
     m_FontSize: 20
-    m_FontStyle: 0
+    m_FontStyle: 1
     m_BestFit: 0
     m_MinSize: 0
     m_MaxSize: 40
@@ -496,8 +496,8 @@ MonoBehaviour:
     m_LineSpacing: 1
   m_Text: "                 \n\n\n\n\nTeemu Kanerva and Nevena Sicevic\n\nPasi Pulkkinen
     (with Support of Sipi)\n\nNevena Sicevic\n\n Sipi Yl\xE4-Nojonen (with Support
-    of Lassi)\n\nTeemu Kanerva (with Support of Everyone\n\nSipi Yl\xE4-Nojonen (with
-    Support of Lassi\n\nLassi Nieminen\n\n\n"
+    of Lassi)\n\nTeemu Kanerva (with Support of Everyone)\n\nSipi Yl\xE4-Nojonen
+    (with Support of Lassi)\n\nLassi Nieminen\n\n\n"
 --- !u!222 &892048746
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -780,7 +780,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.7921569, b: 0, a: 1}
+  m_Color: {r: 0.62352943, g: 0, b: 0.039215688, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -789,7 +789,7 @@ MonoBehaviour:
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
     m_FontSize: 10
-    m_FontStyle: 0
+    m_FontStyle: 1
     m_BestFit: 0
     m_MinSize: 0
     m_MaxSize: 40
@@ -974,8 +974,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -151.7, y: -187.4}
-  m_SizeDelta: {x: 261.67322, y: 490.19214}
+  m_AnchoredPosition: {x: -151.7, y: -227.1}
+  m_SizeDelta: {x: 261.67322, y: 569.5508}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1621419269
 MonoBehaviour:
@@ -990,7 +990,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.7921569, b: 0, a: 1}
+  m_Color: {r: 0.62352943, g: 0, b: 0.039215688, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -1010,7 +1010,7 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: "                 \n    The Spurffs Gaming co.\n\n\n\nWriting and Narrative:
-    \n\nProgramming:\n\nProducer:\n\nGraphics:\n\n\nDesigners:\n\n\nAudio:\n\n\nQA:\n\n"
+    \n\n\nProgramming:\n\n\nProducer:\n\nGraphics:\n\n\nDesigners:\n\n\nAudio:\n\n\nQA:\n\n"
 --- !u!222 &1621419270
 CanvasRenderer:
   m_ObjectHideFlags: 0
