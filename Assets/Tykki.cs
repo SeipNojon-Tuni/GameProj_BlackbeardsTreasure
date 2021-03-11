@@ -27,35 +27,39 @@ public class Tykki : MonoBehaviour
         reloading = false;
     }
     void Update()
-    {
-    Vector2 mousePos = new Vector2();
-    if (Input.GetButtonDown("Fire1"))
-        {
-        if (!reloading) 
+    {   
+        // Check that this character is controlled by this player.
+        if (GetComponent<NetworkIdentity>().hasAuthority) {
+
+        Vector2 mousePos = new Vector2();
+        if (Input.GetButtonDown("Fire1"))
             {
-            // Play sound and set reloading status.
-            auso.clip = sound;
-            auso.Play(0);
-            reloading = true;
+            if (!reloading) 
+                {
+                // Play sound and set reloading status.
+                auso.clip = sound;
+                auso.Play(0);
+                reloading = true;
 
-            mousePos.x = Input.mousePosition.x;
-            mousePos.y = Input.mousePosition.y;
-            Vector3 screenPos = cam.WorldToScreenPoint(transform.position);
-            diffx=mousePos.x-screenPos.x;
-            diffy=mousePos.y-screenPos.y;
-            //distance=Mathf.Sqrt(Mathf.Pow(diffy,2)+Mathf.Pow(diffx,2));
-            kulma=Mathf.Atan(diffy/diffx);
-            if(diffx<0){kulma=kulma-Mathf.PI;};
-            x=Mathf.Cos((kulma));
-            y=Mathf.Sin((kulma));
-            Rigidbody clone;
-            clone = Instantiate(pallo, transform.position + transform.TransformDirection(new Vector3(0, 7, 15)), new Quaternion(0, 0 , 0, 1));
-            clone.AddRelativeForce(new Vector3(x,0,y) * vel_mult * clone.mass);
+                mousePos.x = Input.mousePosition.x;
+                mousePos.y = Input.mousePosition.y;
+                Vector3 screenPos = cam.WorldToScreenPoint(transform.position);
+                diffx=mousePos.x-screenPos.x;
+                diffy=mousePos.y-screenPos.y;
+                //distance=Mathf.Sqrt(Mathf.Pow(diffy,2)+Mathf.Pow(diffx,2));
+                kulma=Mathf.Atan(diffy/diffx);
+                if(diffx<0){kulma=kulma-Mathf.PI;};
+                x=Mathf.Cos((kulma));
+                y=Mathf.Sin((kulma));
+                Rigidbody clone;
+                clone = Instantiate(pallo, transform.position + transform.TransformDirection(new Vector3(0, 7, 15)), new Quaternion(0, 0 , 0, 1));
+                clone.AddRelativeForce(new Vector3(x,0,y) * vel_mult * clone.mass);
 
-            // Set reloaded after delay.
-            Invoke("SetReloaded", reload_time);
+                // Set reloaded after delay.
+                Invoke("SetReloaded", reload_time);
+                }
+
             }
-
         }
     }
     void SetReloaded() {

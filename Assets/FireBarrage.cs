@@ -43,43 +43,48 @@ public class FireBarrage : MonoBehaviour
         }
     }
     void Update()
-    {
-    Vector2 mousePos = new Vector2();
-    // Secondary fire ball barrage
-    if (Input.GetButtonDown("Fire2"))
-        {   
-            if (!reloading) {
-                auso.clip = sound;
-                reloading = true;
-                auso.Play(0);
-        
-                for (int i = 0; i < 10; i++) {
-                    mousePos.x = Input.mousePosition.x;
-                    mousePos.y = Input.mousePosition.y;
-                    Vector3 screenPos = cam.WorldToScreenPoint(transform.position);
-                    diffx=mousePos.x-screenPos.x;
-                    diffy=mousePos.y-screenPos.y;
-                    //distance=Mathf.Sqrt(Mathf.Pow(diffy,2)+Mathf.Pow(diffx,2));
-                    kulma=Mathf.Atan(diffy/diffx);
-                    if(diffx<0){kulma=kulma-Mathf.PI;};
-                    x=Mathf.Cos((kulma));
-                    y=Mathf.Sin((kulma));
-                    
-                    float time = i*0.05f;
+    {   
+        // Check that this character is controlled by this player.
+        if (GetComponent<NetworkIdentity>().hasAuthority) {
 
-                    // Positive x for right side, negative for left.
-                    if (x > 0 ) {
-                        fire_right.Play();                         
-                    }
-                    else {
-                        fire_left.Play();
-                    }
+        Vector2 mousePos = new Vector2();
+        // Secondary fire ball barrage
+        if (Input.GetButtonDown("Fire2"))
+            {   
+                if (!reloading) {
+                    auso.clip = sound;
+                    reloading = true;
+                    auso.Play(0);
+            
+                    for (int i = 0; i < 10; i++) {
+                        mousePos.x = Input.mousePosition.x;
+                        mousePos.y = Input.mousePosition.y;
+                        Vector3 screenPos = cam.WorldToScreenPoint(transform.position);
+                        diffx=mousePos.x-screenPos.x;
+                        diffy=mousePos.y-screenPos.y;
+                        //distance=Mathf.Sqrt(Mathf.Pow(diffy,2)+Mathf.Pow(diffx,2));
+                        kulma=Mathf.Atan(diffy/diffx);
+                        if(diffx<0){kulma=kulma-Mathf.PI;};
+                        x=Mathf.Cos((kulma));
+                        y=Mathf.Sin((kulma));
+                        
+                        float time = i*0.05f;
 
-                    Invoke("ExecuteAfterTime", time);
+                        // Positive x for right side, negative for left.
+                        if (x > 0 ) {
+                            fire_right.Play();                         
+                        }
+                        else {
+                            fire_left.Play();
+                        }
+
+                        Invoke("ExecuteAfterTime", time);
+                    }
+                    // Set weapons reloaded after delay.
+                    Invoke("SetReloaded", reload_time);
                 }
-                // Set weapons reloaded after delay.
-                Invoke("SetReloaded", reload_time);
             }
+
         }
     }
     void ExecuteAfterTime()

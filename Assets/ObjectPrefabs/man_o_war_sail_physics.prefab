@@ -21715,6 +21715,7 @@ GameObject:
   - component: {fileID: 366538194}
   - component: {fileID: 366538195}
   - component: {fileID: 2500971787144595871}
+  - component: {fileID: 4031701643480509986}
   m_Layer: 0
   m_Name: man_o_war_sail_physics
   m_TagString: Untagged
@@ -22104,6 +22105,25 @@ MonoBehaviour:
   visible: 0
   m_AssetId: 
   hasSpawned: 0
+--- !u!114 &4031701643480509986
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6823978883047602771}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a8347d565ad1e54fbcccb2708077f92, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
+  rb: {fileID: 1219594311005584487}
+  Velocity: {x: 0, y: 0, z: 0}
+  Rotation: {x: 0, y: 0, z: 0, w: 0}
+  Position: {x: 0, y: 0, z: 0}
+  AngularVelocity: {x: 0, y: 0, z: 0}
 --- !u!1 &7140408563760418850
 GameObject:
   m_ObjectHideFlags: 0
@@ -23575,15 +23595,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 792eedad4240d4a4d80b47bc8ee36e54, type: 3}
---- !u!198 &6281472212699706576 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 2401047544389140391, guid: 792eedad4240d4a4d80b47bc8ee36e54,
-    type: 3}
-  m_PrefabInstance: {fileID: 8538395771841579895}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6281472212699706577 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2401047544389140390, guid: 792eedad4240d4a4d80b47bc8ee36e54,
+    type: 3}
+  m_PrefabInstance: {fileID: 8538395771841579895}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &6281472212699706576 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 2401047544389140391, guid: 792eedad4240d4a4d80b47bc8ee36e54,
     type: 3}
   m_PrefabInstance: {fileID: 8538395771841579895}
   m_PrefabAsset: {fileID: 0}

@@ -24,24 +24,29 @@ public class Mines : MonoBehaviour
 
     }
     void Update()
-    {
-    // Secondary fire - barrels
-    if (Input.GetButtonDown("Fire2"))
-        {   
-            if (!reloading) {
-                auso.clip = sound;
-                reloading = true;
-                auso.Play(0);
-        
-                for (int i = 0; i < 5; i++) {
+    {   
+        // Check that this character is controlled by this player.
+        if (GetComponent<NetworkIdentity>().hasAuthority) {
 
-                    float time = i*0.2f;
+        // Secondary fire - barrels
+        if (Input.GetButtonDown("Fire2"))
+            {   
+                if (!reloading) {
+                    auso.clip = sound;
+                    reloading = true;
+                    auso.Play(0);
+            
+                    for (int i = 0; i < 5; i++) {
 
-                    Invoke("ExecuteAfterTime", time);
+                        float time = i*0.2f;
+
+                        Invoke("ExecuteAfterTime", time);
+                    }
+                    // Set weapons reloaded after delay.
+                    Invoke("SetReloaded", reload_time);
                 }
-                // Set weapons reloaded after delay.
-                Invoke("SetReloaded", reload_time);
             }
+
         }
     }
     void ExecuteAfterTime()

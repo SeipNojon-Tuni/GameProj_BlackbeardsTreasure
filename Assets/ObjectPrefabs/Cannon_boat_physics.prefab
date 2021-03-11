@@ -264,6 +264,7 @@ GameObject:
   - component: {fileID: 1784683088}
   - component: {fileID: 1784683090}
   - component: {fileID: 3574797585128405756}
+  - component: {fileID: 8863837435264891809}
   m_Layer: 0
   m_Name: Cannon_boat_physics
   m_TagString: Ship
@@ -584,6 +585,25 @@ MonoBehaviour:
   visible: 0
   m_AssetId: 
   hasSpawned: 0
+--- !u!114 &8863837435264891809
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3552767224761659886}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a8347d565ad1e54fbcccb2708077f92, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
+  rb: {fileID: 4348229228908268112}
+  Velocity: {x: 0, y: 0, z: 0}
+  Rotation: {x: 0, y: 0, z: 0, w: 0}
+  Position: {x: 0, y: 0, z: 0}
+  AngularVelocity: {x: 0, y: 0, z: 0}
 --- !u!1 &4132565364087423832
 GameObject:
   m_ObjectHideFlags: 0
