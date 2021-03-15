@@ -494,7 +494,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "                 \n\n\n\n\nTeemu Kanerva and Nevena Sicevic\n\nPasi Pulkkinen
+  m_Text: "                 \n\n\nTeemu Kanerva and Nevena Sicevic\n\nPasi Pulkkinen
     (with Support of Sipi)\n\nNevena Sicevic\n\n Sipi Yl\xE4-Nojonen (with Support
     of Lassi)\n\nTeemu Kanerva (with Support of Everyone)\n\nSipi Yl\xE4-Nojonen
     (with Support of Lassi)\n\nLassi Nieminen\n\n\n"
@@ -1009,7 +1009,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "                 \n    The Spurffs Gaming co.\n\n\n\nWriting and Narrative:
+  m_Text: "                 \n    The Spurffs Gaming co.\n\nWriting and Narrative:
     \n\n\nProgramming:\n\n\nProducer:\n\nGraphics:\n\n\nDesigners:\n\n\nAudio:\n\n\nQA:\n\n"
 --- !u!222 &1621419270
 CanvasRenderer:
