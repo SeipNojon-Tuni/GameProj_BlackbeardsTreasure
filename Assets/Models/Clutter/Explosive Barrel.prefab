@@ -153,6 +153,7 @@ MonoBehaviour:
   manager: {fileID: 320070535657661684}
   depthBeforeSub: 1
   dispAmo: 3
+  water_level: 0
   level: 1
   level_offset: 8
   floaterCount: 3
@@ -171,6 +172,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   water_level: 0
+  tile_scale: 9
   WaveAmplitude: 5
 --- !u!114 &4253160234791652853
 MonoBehaviour:
@@ -184,8 +186,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 582bbc1c62d0d8f41b973576bd5936a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  duration: 5
-  max_damage: -4
+  duration: 3
+  max_damage: -6
 --- !u!114 &1713519672409372610
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -200,6 +202,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sound: {fileID: 8300000, guid: 8dca5262d14d46e4d848815cc7bd8be8, type: 3}
   explosion: {fileID: 6430976818671372984}
+  killAfterTime: 1
 --- !u!136 &8518464325290380778
 CapsuleCollider:
   m_ObjectHideFlags: 0

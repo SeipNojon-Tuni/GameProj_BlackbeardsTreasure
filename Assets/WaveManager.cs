@@ -7,6 +7,7 @@ public class WaveManager : MonoBehaviour
     public float water_level;
     private float noise = 0.0f;
     private Vector2 uv;
+    public float tile_scale = 9;
 
     // Should match WaterShader amplitude for best result.
     public float WaveAmplitude = 5.0f;
@@ -24,8 +25,10 @@ public class WaveManager : MonoBehaviour
 
     public float getLevel(Vector2 position) {
 
+        Vector2 scaled_pos = new Vector2(position.x * tile_scale, position.y * tile_scale);
+
         // Get offset for wave.
-        Unity_TilingAndOffset_float(position, new Vector2(0.3f, 0.3f), Shader.GetGlobalVector("_Time")*0.1f, out uv);
+        Unity_TilingAndOffset_float(scaled_pos, new Vector2(0.3f, 0.3f), Shader.GetGlobalVector("_Time")*0.1f, out uv);
 
         //Debug.Log("Current time " + Shader.GetGlobalVector("_Time")*0.1f);
         

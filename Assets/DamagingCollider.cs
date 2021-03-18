@@ -8,12 +8,15 @@ public class DamagingCollider : MonoBehaviour
 {  
     public AudioClip sound;
     public ParticleSystem explosion;
+    public bool killAfterTime = true;
 
     // Start is called before the first frame update
     void Start()
-    {
-        // Destroy projectiles after time
-        Destroy(gameObject, 25);
+    {   
+        if(killAfterTime) {
+            // Destroy projectiles after time
+            Destroy(gameObject, 25);
+        }
     }
 
     // Update is called once per frame
@@ -24,8 +27,7 @@ public class DamagingCollider : MonoBehaviour
 
     //Detect collisions between the GameObjects with Colliders attached
     void OnTriggerEnter(Collider collider)
-    {   
-
+    {      
         //Check for a match with the specific tag on any GameObject that collides with your GameObject
         if (collider.tag == "Ship")
         {
@@ -35,6 +37,9 @@ public class DamagingCollider : MonoBehaviour
             }
             else if(gameObject.name == "Explosive Barrel(Clone)") {
                 Explode();  
+            }
+            else if(gameObject.tag == "Salvage") {
+                Destroy(gameObject);
             }
         }
     }

@@ -10,8 +10,8 @@ public class CameraControl : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        worldCam.enabled = true;
-        chaseCam.enabled = false;
+        worldCam.enabled = false;
+        chaseCam.enabled = true;
     }
 
     // Update is called once per frame

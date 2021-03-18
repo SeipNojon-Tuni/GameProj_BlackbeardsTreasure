@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ShipHealth : MonoBehaviour
 {   
@@ -10,6 +11,7 @@ public class ShipHealth : MonoBehaviour
     private float dot_mod = 1.0f; // Basic damage over time 1/s;
     public ShipVisualEffects effects;
     public int respawn_time = 5;
+    public Text health_display;
 
     private Vector3 spawn_point;
     private Quaternion orig_rot;
@@ -65,6 +67,10 @@ public class ShipHealth : MonoBehaviour
         // Button released
         if (Input.GetKeyUp(KeyCode.R)) {
             time = 0.0f;
+        }
+
+        if (health_display) {
+            health_display.text = current_health.ToString();
         }
 
     }
@@ -125,19 +131,22 @@ public class ShipHealth : MonoBehaviour
     }
 
     IEnumerator takeDmgOverTime() 
-    {   
-        for (float ft = 0; ft < dot_duration; ft += 0.2f) 
+    {       
+        // Get modifiers for this damage source.
+        float dur = dot_duration;
+        float current_mod = dot_mod;
+
+        // Reset duration so this dmg source won't get reapplied.
+        dot_duration = 0.0f;
+        dot_mod = 1.0f;
+
+        for (float ft = 0; ft < dur; ft += 0.2f) 
         {   
-            float amo = 0.2f * dot_mod;
+            float amo = 0.2f * current_mod;
             modifyHealth(amo); // Dot mod remains dmg/s ticks every .2 seconds
             yield return new WaitForSeconds(.2f); // Tick damage every .2 seconds
         }
-
         effects.stopShipBurning();
-
-        // Return to default values.
-        dot_duration = 0.0f;
-        dot_mod = 1.0f;
     }
 
     // Start ticking damage over time.
@@ -154,7 +163,9 @@ public class ShipHealth : MonoBehaviour
         float magnitude = dmgVals.getDamage();
 
         // Play hit effect.
-        effects.playFlyingDebris();
+        if (collider.tag != "Salvage") {
+            effects.playFlyingDebris();
+        }
 
         // Determine is this single instance or damage over time.
         if (duration >= 1) {
@@ -172,7 +183,7 @@ public class ShipHealth : MonoBehaviour
     {   
 
         //Check for a match with the specific tag on any GameObject that collides with your GameObject
-        if (collider.tag == "Projectile")
+        if (collider.tag == "Projectile" || collider.tag == "Salvage")
         {
             damageCalc(collider);
         }

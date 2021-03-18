@@ -3477,7 +3477,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 25
+      scalar: 45
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -3939,7 +3939,7 @@ ParticleSystem:
     sphericalDirectionAmount: 0
     randomPositionAmount: 0
     radius:
-      value: 1.02
+      value: 5.24
       mode: 0
       spread: 0
       speed:
@@ -21678,8 +21678,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 15.534243, y: 26.589481, z: 60.436783}
-  m_Center: {x: 0.0019035339, y: 11.323299, z: -2.4673843}
+  m_Size: {x: 15.534243, y: 30.240376, z: 60.436783}
+  m_Center: {x: 0.0019035339, y: 9.497852, z: -2.4673843}
 --- !u!65 &6604588421877963253
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -21747,6 +21747,7 @@ MonoBehaviour:
   baseHealth: 130
   effects: {fileID: 328712668605759600}
   respawn_time: 7
+  health_display: {fileID: 0}
 --- !u!114 &8840267559245155138
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21835,6 +21836,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   water_level: 0
+  tile_scale: 9
   WaveAmplitude: 5
 --- !u!114 &328712668605759600
 MonoBehaviour:
@@ -23211,17 +23213,17 @@ PrefabInstance:
     - target: {fileID: 2401047544389140390, guid: 792eedad4240d4a4d80b47bc8ee36e54,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 5
+      value: 9.89
       objectReference: {fileID: 0}
     - target: {fileID: 2401047544389140390, guid: 792eedad4240d4a4d80b47bc8ee36e54,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 5
+      value: 7.34
       objectReference: {fileID: 0}
     - target: {fileID: 2401047544389140390, guid: 792eedad4240d4a4d80b47bc8ee36e54,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 5
+      value: 6.75
       objectReference: {fileID: 0}
     - target: {fileID: 2401047544389140390, guid: 792eedad4240d4a4d80b47bc8ee36e54,
         type: 3}

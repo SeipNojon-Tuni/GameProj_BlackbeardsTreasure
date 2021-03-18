@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
  public class CachalotMove : MonoBehaviour {
-    private float timeToChangeDirection = 10.0f;
+    private float timeToChangeDirection = 4.0f;
     public Rigidbody rigidBody;
 
     // Use this for initialization
@@ -32,10 +32,20 @@ using UnityEngine;
 
     // Change direction randomly.
     private void ChangeDirection() {
-        float angle = Random.Range(-15.0f, 15.0f);
-        transform.Rotate(0, angle, 0);
+
+        float angle = Random.Range(-25.0f, 25.0f);
+        //transform.Rotate(0, angle, 0);
+
+        rigidBody.AddTorque(0, angle, 0);
 
         float time = Random.Range(5.0f, 10.0f);
         timeToChangeDirection = time;
+
+
+    }
+
+    void OnTriggerEnter(Collider collider) {
+        ChangeDirection();
+
     }
 }
