@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.4465782, g: 0.49641252, b: 0.5748167, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -185,7 +185,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &260087731
 GameObject:
@@ -273,11 +273,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 260087731}
   m_LocalRotation: {x: 0.40821788, y: -0.23456968, z: 0.10938163, w: 0.8754261}
-  m_LocalPosition: {x: 0, y: 3, z: 0}
+  m_LocalPosition: {x: -696, y: -311.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_Father: {fileID: 816722446}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!1 &363258811
 GameObject:
@@ -385,7 +385,8 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 260087733}
   m_Father: {fileID: 953605648}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -527,7 +528,7 @@ RectTransform:
   - {fileID: 1249807247}
   - {fileID: 1042899378}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -546,6 +547,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 317af573fac206c43991f4c1aad0c515, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  auso: {fileID: 0}
+  setClip: {fileID: 0}
 --- !u!1 &1042899377
 GameObject:
   m_ObjectHideFlags: 0
@@ -597,6 +600,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 317af573fac206c43991f4c1aad0c515, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  auso: {fileID: 0}
+  setClip: {fileID: 0}
 --- !u!1 &1198022331
 GameObject:
   m_ObjectHideFlags: 0
@@ -1023,6 +1028,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 317af573fac206c43991f4c1aad0c515, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  auso: {fileID: 0}
+  setClip: {fileID: 8300000, guid: 160137c6c94dabe4cbe2d5fb1bac99bc, type: 3}
 --- !u!1 &1379340567
 GameObject:
   m_ObjectHideFlags: 0
@@ -1327,17 +1334,18 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 1198022332}
-        m_MethodName: Play
-        m_Mode: 1
+        m_MethodName: PlayOneShot
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 8300000, guid: 160137c6c94dabe4cbe2d5fb1bac99bc,
+            type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1814154176}
+      - m_Target: {fileID: 0}
         m_MethodName: 
         m_Mode: 1
         m_Arguments:
@@ -1552,7 +1560,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1814154177}
-  - component: {fileID: 1814154176}
   m_Layer: 0
   m_Name: Timer
   m_TagString: Untagged
@@ -1560,18 +1567,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1814154176
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1814154175}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eecfe89204b60814d8c73ed31df62ba5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &1814154177
 Transform:
   m_ObjectHideFlags: 0
@@ -1584,7 +1579,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2126683833
 GameObject:

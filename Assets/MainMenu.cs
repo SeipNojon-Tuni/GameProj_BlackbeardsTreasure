@@ -4,10 +4,12 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour {
-    
+    public AudioSource auso;
+    public AudioClip setClip;
+
     public void PlayGame ()
-    {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    {   
+        StartCoroutine(startAfterDelay());
     }
 
     public void QuitGame ()
@@ -20,4 +22,16 @@ public class MainMenu : MonoBehaviour {
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 2);
     }
+
+    private IEnumerator startAfterDelay() {
+
+        // Wait the parrot sound.
+        if(setClip) {
+            yield return new WaitForSeconds(setClip.length + 0.2f);
+        }
+
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
+
+
 }
