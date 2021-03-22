@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu (Test.unity
     guid: cb1186e403bdff4438a2271e3c0a45b0
   - enabled: 1
+    path: Assets/Scenes/ChooseYourSide.unity
+    guid: 5df1223460cdb87489567e46e51e510e
+  - enabled: 1
     path: Assets/Scenes/Level.unity
     guid: 4c82f4240fcfab445bf01b58e4051419
   - enabled: 1

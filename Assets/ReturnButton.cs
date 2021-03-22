@@ -7,7 +7,7 @@ public class ReturnButton : MonoBehaviour {
   
     public void Return ()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 2);
     }
 
 }
