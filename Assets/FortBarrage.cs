@@ -10,12 +10,8 @@ public class FortBarrage : MonoBehaviour
     public AudioSource auso;  
     public float x_offset = 15;
 
-    private float diffx;
-    private float diffy;
     private float x;
     private float y;
-    private float kulma;
-    private float distance;
 
     private bool reloading;
     private ParticleSystem barrage;

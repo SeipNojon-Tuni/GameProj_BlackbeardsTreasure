@@ -30,11 +30,23 @@ public class ShipRigid : MonoBehaviour
     void Update()
     {       
         if (canMove) {
-            // Rigidbody version of ship controller
-            //transform.Rotate(0,Input.GetAxis("Horizontal")*turn_rate*Time.deltaTime,0);
-            rigidBody.AddTorque(0,Input.GetAxis("Horizontal")*turn_rate*Time.deltaTime,0);
 
-            Vector3 move = new Vector3(0, 0, Input.GetAxis("Vertical"));
+            float horizontal = 0.0f;
+            float vertical = 0.0f;
+
+            // Get the right player input
+            if(gameObject.name == "ManOWarPlayer1" || gameObject.name == "CannonBoatPlayer1") {
+                horizontal = Input.GetAxis("Player1_Horizontal");
+                vertical = Input.GetAxis("Player1_Vertical");
+            }
+            else if(gameObject.name == "ManOWarPlayer2" || gameObject.name == "CannonBoatPlayer2") {
+                horizontal = Input.GetAxis("Player2_Horizontal");
+                vertical = Input.GetAxis("Player2_Vertical");
+            }
+
+            rigidBody.AddTorque(0,horizontal*turn_rate*Time.deltaTime,0);
+
+            Vector3 move = new Vector3(0, 0, vertical);
             move = transform.TransformDirection(move);
             move.y = 0; // Disable vertical acceleration to avoid flying.
             currentMove = move * Time.deltaTime * playerSpeed * mass;
