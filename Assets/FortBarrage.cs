@@ -20,8 +20,18 @@ public class FortBarrage : MonoBehaviour
     private bool reloading;
     private ParticleSystem barrage;
 
+    private GameObject p1_manowar;
+    private GameObject p1_cannonboat;
+    private GameObject p2_manowar;
+    private GameObject p2_cannonboat;
+
+    public float min_firing_dist = 170f;
+
     void Start()
-    {
+    {   
+        // Get player controller units.
+        p1_manowar = GameObject.Find("ManOWarPlayer1");
+        p1_cannonboat = GameObject.Find("CannonBoatPlayer1");
 
         reloading = false;
 
@@ -53,7 +63,20 @@ public class FortBarrage : MonoBehaviour
 
     // Return whether or not player is close enough to shoot.
     bool playerClose() {
-        return true;
+        if (p1_manowar && Vector3.Distance(p1_manowar.transform.position, transform.position) < min_firing_dist) {
+            return true;
+        }
+        else if (p1_cannonboat && Vector3.Distance(p1_cannonboat.transform.position, transform.position) < min_firing_dist) {
+            return true;
+        }
+        else if (p2_manowar && Vector3.Distance(p2_manowar.transform.position, transform.position) < min_firing_dist) {
+            return true;
+        }
+        else if (p2_cannonboat && Vector3.Distance(p2_cannonboat.transform.position, transform.position) < min_firing_dist) {
+            return true;
+        }
+
+        return false;
     }
 
     void ExecuteAfterTime()

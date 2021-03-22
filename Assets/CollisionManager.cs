@@ -22,8 +22,6 @@ public class CollisionManager : MonoBehaviour
     void OnTriggerEnter(Collider collider) {
         if(collider.tag == "Terrain" || collider.tag == "Ship") {
 
-            Debug.Log("Collision between " + gameObject.name + " and " + collider.name);
-
             if ( collider.tag != "Terrain" && (Mathf.Abs(rigidBody.velocity.x) < 2 && Mathf.Abs(rigidBody.velocity.z) < 2)) {
                 rigidBody.velocity = -1.3f * collider.GetComponent<Rigidbody>().velocity;
                 Debug.Log(rigidBody.velocity);
@@ -34,4 +32,5 @@ public class CollisionManager : MonoBehaviour
 
         }
     }
+
 }

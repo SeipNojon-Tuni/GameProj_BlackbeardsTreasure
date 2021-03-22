@@ -69,10 +69,6 @@ public class ShipHealth : MonoBehaviour
             time = 0.0f;
         }
 
-        if (health_display) {
-            health_display.text = current_health.ToString();
-        }
-
     }
 
     // Get ship health

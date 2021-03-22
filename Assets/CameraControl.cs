@@ -5,13 +5,15 @@ using UnityEngine;
 public class CameraControl : MonoBehaviour
 {   
     public Camera worldCam;
-    public Camera chaseCam;
+    public Camera chaseCamP1;
+    public Camera chaseCamP2;
 
     // Start is called before the first frame update
     void Start()
     {
         worldCam.enabled = false;
-        chaseCam.enabled = true;
+        chaseCamP1.enabled = true;
+        chaseCamP2.enabled = true;
     }
 
     // Update is called once per frame
@@ -20,7 +22,8 @@ public class CameraControl : MonoBehaviour
         // Change between active camera with 'C'.
         if (Input.GetKeyDown(KeyCode.C)) {
             worldCam.enabled = !worldCam.enabled;
-            chaseCam.enabled = !chaseCam.enabled;
+            chaseCamP1.enabled = !chaseCamP1.enabled;
+            chaseCamP2.enabled = !chaseCamP2.enabled;
         }
     }
 }

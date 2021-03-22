@@ -14374,6 +14374,8 @@ GameObject:
   - component: {fileID: 4593079801469361210}
   - component: {fileID: 2986342756892822503}
   - component: {fileID: 8499545298870018819}
+  - component: {fileID: 3606665594092197324}
+  - component: {fileID: 7203644953653208482}
   m_Layer: 0
   m_Name: man_o_war_static
   m_TagString: Ship
@@ -14644,6 +14646,32 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &3606665594092197324
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8308552145688539588}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90bcdccac53a5e949baf6073426cec6d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rigidBody: {fileID: 0}
+--- !u!114 &7203644953653208482
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8308552145688539588}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe795caf37fa72a4dab77636943c9ede, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rigidBody: {fileID: 0}
 --- !u!1 &8332234681280183766
 GameObject:
   m_ObjectHideFlags: 0

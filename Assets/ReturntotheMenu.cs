@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class ReturntotheMenu : MonoBehaviour {
     
     public void Return ()
-    {
+    {   
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 2);
     }
 }

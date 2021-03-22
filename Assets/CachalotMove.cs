@@ -14,27 +14,24 @@ using UnityEngine;
             rigidBody = GetComponent<Rigidbody>();
         }
 
-        rigidBody.detectCollisions = false;
-
         ChangeDirection();
     }
     
     // Update is called once per frame
-    public void Update () {
+    void Update () {
         timeToChangeDirection -= Time.deltaTime;
 
         if (timeToChangeDirection <= 0) {
             ChangeDirection();
         }
-
-        rigidBody.velocity = 15 * transform.forward;
+        rigidBody.AddForce(1500 * Time.deltaTime * transform.forward * rigidBody.mass);
     }
 
     // Change direction randomly.
-    private void ChangeDirection() {
-
-        float angle = Random.Range(-25.0f, 25.0f);
-        //transform.Rotate(0, angle, 0);
+    private void ChangeDirection(float angle = 0) {
+        if (angle == 0) {
+            angle = Random.Range(-25.0f, 5.0f);
+        }
 
         rigidBody.AddTorque(0, angle, 0);
 
@@ -45,7 +42,16 @@ using UnityEngine;
     }
 
     void OnTriggerEnter(Collider collider) {
-        ChangeDirection();
-
+        if(collider.tag == "Terrain") {
+            float direction = Mathf.Sign(Random.Range(-1, 1));
+            float angle = direction * Random.Range(60f, 90f);
+            ChangeDirection(angle);
+        }
+        else if(collider.tag == "Ship") {
+            float direction = Mathf.Sign(Random.Range(-1, 1));
+            float angle = direction * Random.Range(15, 30f);
+            ChangeDirection(angle);
+        }
     }
+
 }
