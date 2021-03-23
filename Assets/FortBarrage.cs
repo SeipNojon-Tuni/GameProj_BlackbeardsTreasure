@@ -28,6 +28,8 @@ public class FortBarrage : MonoBehaviour
         // Get player controller units.
         p1_manowar = GameObject.Find("ManOWarPlayer1");
         p1_cannonboat = GameObject.Find("CannonBoatPlayer1");
+        p2_manowar = GameObject.Find("ManOWarPlayer2");
+        p2_cannonboat = GameObject.Find("CannonBoatPlayer2");
 
         reloading = false;
 

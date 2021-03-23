@@ -5731,7 +5731,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 8dca5262d14d46e4d848815cc7bd8be8, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.706
+  m_Volume: 0.15
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -5835,6 +5835,9 @@ GameObject:
   - component: {fileID: 6541963184873043787}
   - component: {fileID: 7086739877366780302}
   - component: {fileID: 7066682118747657248}
+  - component: {fileID: 1077808002261798573}
+  - component: {fileID: 1108202646083555021}
+  - component: {fileID: 6018097530856654982}
   m_Layer: 0
   m_Name: cannon_boat_static
   m_TagString: Ship
@@ -5883,7 +5886,7 @@ Rigidbody:
   m_Mass: 200
   m_Drag: 0.7
   m_AngularDrag: 0.5
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
@@ -5903,6 +5906,7 @@ MonoBehaviour:
   baseHealth: 100
   effects: {fileID: 7086739877366780302}
   respawn_time: 5
+  health_display: {fileID: 0}
 --- !u!114 &3705470793373291012
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5919,6 +5923,7 @@ MonoBehaviour:
   manager: {fileID: 6541963184873043787}
   depthBeforeSub: 1
   dispAmo: 2
+  water_level: 0
   level: 1
   level_offset: 8.5
   floaterCount: 12
@@ -5939,6 +5944,8 @@ MonoBehaviour:
   rigidBody: {fileID: 4991849750529171011}
   playerSpeed: 2000
   turn_rate: 35
+  canMove: 1
+  land: {fileID: 0}
 --- !u!114 &2890052874374104448
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5984,8 +5991,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 4.8287354, y: 5.919304, z: 29.133026}
-  m_Center: {x: -0.16686249, y: 1.7065086, z: 4.066513}
+  m_Size: {x: 4.8287354, y: 9.212307, z: 32.584717}
+  m_Center: {x: -0.16686249, y: 0.060007095, z: 5.7923584}
 --- !u!65 &6244719395266661263
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6012,6 +6019,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   water_level: 0
+  tile_scale: 9
   WaveAmplitude: 5
 --- !u!114 &7086739877366780302
 MonoBehaviour:
@@ -6046,6 +6054,48 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1077808002261798573
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5211625071461017085}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90bcdccac53a5e949baf6073426cec6d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rigidBody: {fileID: 4991849750529171011}
+--- !u!114 &1108202646083555021
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5211625071461017085}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99d7aa32b4d591646a7279f123a6b678, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mine: {fileID: 1963615377685116304, guid: fe3e0363cdab8b24f85a7a9eb5e55f5a, type: 3}
+  auso: {fileID: 7294633653546561234}
+  sound: {fileID: 8300000, guid: dd16613ba69286a49828cc208cf79d3e, type: 3}
+  treshold: 0.3
+--- !u!114 &6018097530856654982
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5211625071461017085}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe795caf37fa72a4dab77636943c9ede, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rigidBody: {fileID: 4991849750529171011}
 --- !u!1 &7872486777805800514
 GameObject:
   m_ObjectHideFlags: 0

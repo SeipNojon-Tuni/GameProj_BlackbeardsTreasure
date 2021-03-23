@@ -22,7 +22,7 @@ public class CharacterSwap : MonoBehaviour
 
         manOWar.SetActive(true);
         cannonBoat.SetActive(false);
-        chaseCam.GetComponent<FollowCamera>().target = manOWar.transform;
+        chaseCam.GetComponent<FollowCamera>().changeTarget(manOWar.transform);
         ui.GetComponent<UIHandler>().setCurrentTarget(manOWar);
     }
 
@@ -40,12 +40,12 @@ public class CharacterSwap : MonoBehaviour
             // Switch between camera target.
             if (manOWar.activeSelf) {
                 manOWar.transform.position = manOWarSpawn;
-                chaseCam.GetComponent<FollowCamera>().target = manOWar.transform;
+                chaseCam.GetComponent<FollowCamera>().changeTarget(manOWar.transform);
                 ui.GetComponent<UIHandler>().setCurrentTarget(manOWar);
             }
             else {
                 cannonBoat.transform.position = cannonBoatSpawn;
-                chaseCam.GetComponent<FollowCamera>().target = cannonBoat.transform;
+                chaseCam.GetComponent<FollowCamera>().changeTarget(cannonBoat.transform);
                 ui.GetComponent<UIHandler>().setCurrentTarget(cannonBoat);
             }
 

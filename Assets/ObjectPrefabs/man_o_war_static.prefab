@@ -5265,7 +5265,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 7c113ccfac0e8b74d848acad4ca1ee4a, type: 2}
+  - {fileID: 2100000, guid: 78fc96ee96f6cb74a9f546ae32199f5b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -14376,6 +14376,7 @@ GameObject:
   - component: {fileID: 8499545298870018819}
   - component: {fileID: 3606665594092197324}
   - component: {fileID: 7203644953653208482}
+  - component: {fileID: 4815769758292076796}
   m_Layer: 0
   m_Name: man_o_war_static
   m_TagString: Ship
@@ -14437,7 +14438,7 @@ Rigidbody:
   m_Mass: 200
   m_Drag: 0.7
   m_AngularDrag: 0.5
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
@@ -14672,6 +14673,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rigidBody: {fileID: 0}
+--- !u!114 &4815769758292076796
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8308552145688539588}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa5dc39087bae5d4396a89f640cc3926, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pallo: {fileID: 8935117675067313532, guid: c110297cfba82e84fa957fc61a9aebf3, type: 3}
+  vel_mult: 5000
+  reload_time: 10
+  auso: {fileID: 2154655626450388754}
+  x_offset: 15
+  min_firing_dist: 170
 --- !u!1 &8332234681280183766
 GameObject:
   m_ObjectHideFlags: 0
