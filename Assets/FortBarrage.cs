@@ -41,6 +41,8 @@ public class FortBarrage : MonoBehaviour
     {   
         // Check player distance 
         if (playerClose() && !reloading) {
+
+            
             
             auso.Play();
 

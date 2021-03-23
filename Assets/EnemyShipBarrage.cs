@@ -55,10 +55,6 @@ public class EnemyShipBarrage : MonoBehaviour
 
         // Check player distance 
         if (target && !reloading) {
-            
-            auso.Play();
-
-            reloading = true;
 
             // Check player side relative to ship to shoot
             Vector3 rightFlat = transform.right;
@@ -93,6 +89,11 @@ public class EnemyShipBarrage : MonoBehaviour
                 y = 0;
             }
             if(x_off != 0) {
+
+                // Prevent shooting if shot already
+                auso.Play();
+                reloading = true;
+
                 for (int i = 0; i < 15; i++) {
                     
                     float time = i*0.2f;
