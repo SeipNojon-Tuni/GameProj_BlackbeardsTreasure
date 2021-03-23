@@ -21,7 +21,7 @@ public class FortBarrage : MonoBehaviour
     private GameObject p2_manowar;
     private GameObject p2_cannonboat;
 
-    public float min_firing_dist = 170f;
+    public float min_firing_dist = 200f;
 
     void Start()
     {   
@@ -38,45 +38,60 @@ public class FortBarrage : MonoBehaviour
         barrage = smokes[0];
     }
     void Update()
-    {   
-        // Check player distance 
-        if (playerClose() && !reloading) {
+    {       
+        
+        Transform target = playerClose();
 
+        // Check player distance
+        if (target && !reloading) {
+         
+            // Check player side relative to ship to shoot
+            Vector3 rightFlat = transform.forward;
+            rightFlat.y = 0;
             
+            Vector3 targetDirectionFlat = target.position - transform.position;
+            targetDirectionFlat.y = 0;
             
-            auso.Play();
+            Vector3 unitRight = rightFlat / rightFlat.magnitude;
+            Vector3 unitTarget = targetDirectionFlat / targetDirectionFlat.magnitude;
+            float direction = Vector3.Dot(unitRight, unitTarget);
 
-            reloading = true;
-
-            for (int i = 0; i < 15; i++) {
-                x = transform.TransformDirection(0, 0, 5).x;
-                y = transform.TransformDirection(0, 0, 5).z;
+            if(direction >= 0 ) {
                 
-                float time = i*0.2f;
+                auso.Play();
 
-                Invoke("ExecuteAfterTime", time);
+                reloading = true;
+
+                for (int i = 0; i < 15; i++) {
+                    x = transform.TransformDirection(0, 0, 5).x;
+                    y = transform.TransformDirection(0, 0, 5).z;
+                    
+                    float time = i*0.2f;
+
+                    Invoke("ExecuteAfterTime", time);
+                }
+                // Set weapons reloaded after delay.
+                Invoke("SetReloaded", reload_time);
             }
-            // Set weapons reloaded after delay.
-            Invoke("SetReloaded", reload_time);
         }
     }
 
     // Return whether or not player is close enough to shoot.
-    bool playerClose() {
+    Transform playerClose() {
         if (p1_manowar && Vector3.Distance(p1_manowar.transform.position, transform.position) < min_firing_dist) {
-            return true;
+            return p1_manowar.transform;
         }
         else if (p1_cannonboat && Vector3.Distance(p1_cannonboat.transform.position, transform.position) < min_firing_dist) {
-            return true;
+            return p1_cannonboat.transform;
         }
         else if (p2_manowar && Vector3.Distance(p2_manowar.transform.position, transform.position) < min_firing_dist) {
-            return true;
+            return p2_manowar.transform;
         }
         else if (p2_cannonboat && Vector3.Distance(p2_cannonboat.transform.position, transform.position) < min_firing_dist) {
-            return true;
+            return p2_cannonboat.transform;
         }
 
-        return false;
+        return null;
     }
 
     void ExecuteAfterTime()
