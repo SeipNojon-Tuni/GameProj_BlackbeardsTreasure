@@ -27,9 +27,11 @@ public class Score : MonoBehaviour
             if(globalVar) {
                 if(globalVar.GetComponent<GlobalVariables>().getVictory() == 1) {
                     SceneManager.LoadScene("VictorySceneAnimals");
+                    score = 0;
                 }
                 else {
-                    SceneManager.LoadScene("VictorySceneRobots");  
+                    SceneManager.LoadScene("VictorySceneRobots");
+                    score = 0;
                 }
             }
             // When running solely Level scene jump to Animal victory so no error occures.
