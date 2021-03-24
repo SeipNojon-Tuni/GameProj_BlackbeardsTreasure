@@ -12,7 +12,11 @@ public class ShipHealth : MonoBehaviour
     public ShipVisualEffects effects;
     public int respawn_time = 5;
     public Text health_display;
+    public EnemyScore score;
 
+    public Rigidbody treasure;
+
+    private bool dropLootOnDeath = false;
     private Vector3 spawn_point;
     private Quaternion orig_rot;
     private float orig_mass;
@@ -26,13 +30,24 @@ public class ShipHealth : MonoBehaviour
 
     // Start is called before the first frame update
     void Start()
-    {
+    {   
         current_health = baseHealth;
         rig = GetComponent<Rigidbody>();
         floater = gameObject.GetComponent<Floater>();
         anim_control = gameObject.GetComponent<Animator>();
         orig_mass = rig.mass;
         controlScript = GetComponent<ShipRigid>();
+
+        if(!score) {
+            score = gameObject.GetComponent<EnemyScore>();
+        }
+        // Prevent dropping loot if no EnemyScore component
+        if(!score) {
+            dropLootOnDeath = false;
+        }
+        else {
+            dropLootOnDeath = true;
+        }
 
         // Get spawn point
         spawn_point = transform.position;
@@ -80,6 +95,9 @@ public class ShipHealth : MonoBehaviour
         // Don't have several deaths running at a time.
         dead = true;
 
+        // Drop loot if instructed to.
+        dropLoot();
+
         // Sink ship
         float offset = floater.level_offset;
 
@@ -118,6 +136,23 @@ public class ShipHealth : MonoBehaviour
         controlScript.canMove = true;
 
         dead = false;
+    }
+
+    void dropLoot() {
+        if(dropLootOnDeath) {
+            int dropAmo = score.getScore();
+
+            for (int i = 0; i < 1; i++) {
+
+                float time = i*0.05f;
+
+                Invoke("ExecuteAfterTime", time);
+            }
+
+            // Reset ship score
+            score.resetScore();
+
+        }
     }
 
     // Take basic damage instance.
@@ -184,6 +219,19 @@ public class ShipHealth : MonoBehaviour
             damageCalc(collider);
         }
         return;
+
+    }
+
+    // Drop loot
+    void ExecuteAfterTime()
+    {   
+        float z_off = Random.Range(-10.0f, 10.0f);
+
+        Rigidbody clone;
+        Vector3 pos = transform.position -20*transform.forward;
+
+        clone = Instantiate(treasure, pos, new Quaternion(0, 0 , 0, 1));
+        clone.AddRelativeForce(-transform.forward*120);
 
     }
 

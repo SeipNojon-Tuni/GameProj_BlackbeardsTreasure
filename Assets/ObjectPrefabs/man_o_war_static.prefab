@@ -14377,6 +14377,7 @@ GameObject:
   - component: {fileID: 3606665594092197324}
   - component: {fileID: 7203644953653208482}
   - component: {fileID: 4815769758292076796}
+  - component: {fileID: 1998385425143707987}
   m_Layer: 0
   m_Name: man_o_war_static
   m_TagString: Ship
@@ -14524,6 +14525,9 @@ MonoBehaviour:
   effects: {fileID: 2986342756892822503}
   respawn_time: 5
   health_display: {fileID: 0}
+  score: {fileID: 0}
+  treasure: {fileID: 6435870851266960268, guid: 875302e3b3866ef4e90c3f0503ed41ca,
+    type: 3}
 --- !u!114 &6291735411571359957
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14691,6 +14695,18 @@ MonoBehaviour:
   auso: {fileID: 2154655626450388754}
   x_offset: 15
   min_firing_dist: 170
+--- !u!114 &1998385425143707987
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8308552145688539588}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79a2a970b9e0efe439cd6b7f8e45c412, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8332234681280183766
 GameObject:
   m_ObjectHideFlags: 0
