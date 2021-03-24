@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Score : MonoBehaviour
 {   
@@ -21,8 +22,10 @@ public class Score : MonoBehaviour
 
     public void AddScore() {
         score += 1;
+        if (score == 4)
+            SceneManager.LoadScene("VictorySceneAnimals");
 
-        if(scoreboard) {
+        if (scoreboard) {
             scoreboard.AddScore();
         }
 
