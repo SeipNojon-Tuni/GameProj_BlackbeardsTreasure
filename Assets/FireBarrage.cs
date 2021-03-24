@@ -72,8 +72,10 @@ public class FireBarrage : MonoBehaviour
 
                     Invoke("ExecuteAfterTime", time);
                 }
+                
                 // Set weapons reloaded after delay.
                 Invoke("SetReloaded", reload_time);
+
             }
         }
     }

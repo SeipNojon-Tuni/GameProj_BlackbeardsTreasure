@@ -8,6 +8,8 @@ public class UIHandler : MonoBehaviour
     public Text health_display;
     public GameObject currentTarget;
     public Text score_display;
+    public Text weaponRdyText;
+
     private int score;
     public Image primary;
     public Image secondary;
@@ -17,6 +19,13 @@ public class UIHandler : MonoBehaviour
     public Sprite fireBarrage;
     public Sprite barrel;
 
+    public AudioSource auso;
+    public AudioClip reloadSound;
+    public AudioClip chWeapon;
+    
+    private Image activeWeapon;
+    private Color refColor;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -25,6 +34,10 @@ public class UIHandler : MonoBehaviour
 
         primary.enabled = true;
         secondary.enabled = false;
+
+        weaponRdyText.enabled = false;
+
+        activeWeapon = primary;
     }
 
     // Update is called once per frame
@@ -46,10 +59,14 @@ public class UIHandler : MonoBehaviour
         if(currentTarget.name == "ManOWarPlayer1" || currentTarget.name == "ManOWarPlayer2") {
             primary.sprite = barrage;
             secondary.sprite = fireBarrage;
+
+            activeWeapon = primary;
         }
         else {
             primary.sprite = cannon;
             secondary.sprite = barrel;
+
+            activeWeapon = secondary;
         }
 
     }
@@ -63,6 +80,47 @@ public class UIHandler : MonoBehaviour
             primary.enabled = false;
             secondary.enabled = true;
         }
+
+        if(auso) {
+            auso.clip = chWeapon;
+            auso.Play();
+        }
+    }
+
+    public void reloadCycle(float time) {
+
+        // Enable corresponding empty image.
+        if(activeWeapon = primary) {
+            //primaryEmpty.enabled = true;
+            refColor = primary.color;
+        }
+        else {
+            //secondaryEmpty.enabled = true;
+            refColor = secondary.color;
+        }
+        
+        StartCoroutine(imageLerp(time));
+    }
+
+    IEnumerator imageLerp(float time) {
+
+        for (float ft = 0; ft < time; ft += 0.2f) {
+            float current = ft / time;
+            activeWeapon.color = new Color(Mathf.Lerp(0.95f, refColor.r, current), Mathf.Lerp(0.95f, refColor.b, current),  Mathf.Lerp(0.95f, refColor.g, current), Mathf.Lerp(0.5f, 1.0f, current));
+            yield return new WaitForSeconds(.2f);
+        }
+
+        // Play reloaded sound
+        auso.clip = reloadSound;
+        auso.Play();
+
+        StartCoroutine(displayReady());
+    }
+
+    IEnumerator displayReady() {
+        weaponRdyText.enabled = true;
+        yield return new WaitForSeconds(1.0f);
+        weaponRdyText.enabled = false;
     }
 
     public void AddScore() {
