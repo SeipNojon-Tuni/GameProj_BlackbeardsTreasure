@@ -7,11 +7,12 @@ using UnityEngine.SceneManagement;
 public class Score : MonoBehaviour
 {   
     public UIHandler scoreboard;
-    private int score = 0;
+    public GameObject globalVar;
+    private static int score = 0;
     // Start is called before the first frame update
     void Start()
     {
-
+        globalVar = GameObject.Find("GlobalVariables");
     }
 
     // Update is called once per frame
@@ -22,8 +23,19 @@ public class Score : MonoBehaviour
 
     public void AddScore() {
         score += 1;
-        if (score == 4)
-            SceneManager.LoadScene("VictorySceneAnimals");
+        if (score >= 4)
+            if(globalVar) {
+                if(globalVar.GetComponent<GlobalVariables>().getVictory() == 1) {
+                    SceneManager.LoadScene("VictorySceneAnimals");
+                }
+                else {
+                    SceneManager.LoadScene("VictorySceneAliens");  
+                }
+            }
+            // When running solely Level scene jump to Animal victory so no error occures.
+            else {
+                SceneManager.LoadScene("VictorySceneAnimals");
+            }
 
         if (scoreboard) {
             scoreboard.AddScore();
