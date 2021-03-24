@@ -29,7 +29,7 @@ public class Score : MonoBehaviour
                     SceneManager.LoadScene("VictorySceneAnimals");
                 }
                 else {
-                    SceneManager.LoadScene("VictorySceneAliens");  
+                    SceneManager.LoadScene("VictorySceneRobots");  
                 }
             }
             // When running solely Level scene jump to Animal victory so no error occures.
