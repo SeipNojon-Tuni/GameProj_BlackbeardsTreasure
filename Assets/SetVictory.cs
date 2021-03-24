@@ -13,10 +13,14 @@ public class SetVictory : MonoBehaviour
     }
 
     public void setVictoryAliens() {
-        globalVar.GetComponent<GlobalVariables>().setVictory(2);
+        if(globalVar) {
+            globalVar.GetComponent<GlobalVariables>().setVictory(2);
+        }
     }
 
     public void setVictoryAnimals() {
-        globalVar.GetComponent<GlobalVariables>().setVictory(1);
+        if(globalVar) {
+            globalVar.GetComponent<GlobalVariables>().setVictory(1);
+        }
     }
 }
