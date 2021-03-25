@@ -13,6 +13,7 @@ public class ShipHealth : MonoBehaviour
     public int respawn_time = 5;
     public Text health_display;
     public EnemyScore score;
+    public DisplayDialogue dialogueTrigger;
 
     public Rigidbody treasure;
 
@@ -27,6 +28,12 @@ public class ShipHealth : MonoBehaviour
     private ShipRigid controlScript;
     private float timeSpan = 1.0f;
     private float time = 0.0f;
+
+    // Keep track of used dialogue.
+    private bool firstHit = false;
+    private bool midHealth = false;
+    private bool lowHealth = false;
+    private bool noHealth = false;
 
     // Start is called before the first frame update
     void Start()
@@ -52,6 +59,8 @@ public class ShipHealth : MonoBehaviour
         // Get spawn point
         spawn_point = transform.position;
         orig_rot = transform.rotation;
+
+        dialogueTrigger = GameObject.Find("DialogueController").GetComponent<DisplayDialogue>();
 
     }
 
@@ -82,6 +91,50 @@ public class ShipHealth : MonoBehaviour
             time = 0.0f;
         }
 
+        // Trigger dialogues
+        if(dialogueTrigger) {
+
+            // For player 
+            if(!dropLootOnDeath) {
+                if(!firstHit && current_health < baseHealth) {
+                    dialogueTrigger.displayDialogue("FirstHit");
+                    firstHit = true;
+                }
+                else if(!midHealth && current_health < (0.5f * baseHealth) ) {
+                    dialogueTrigger.displayDialogue("MidHealth");
+                    midHealth = true;
+                }
+                else if(!lowHealth && current_health < (0.15f * baseHealth) ) {
+                    dialogueTrigger.displayDialogue("AlmostDead");
+                    lowHealth = true;
+                }
+                else if(!noHealth && dead ) {
+                    dialogueTrigger.displayDialogue("Dead");
+                    noHealth = true;
+                }
+            }
+
+            // For Enemy
+            else {
+                if(!midHealth && current_health < (0.5f * baseHealth) ) {
+                    dialogueTrigger.displayDialogue("MidHealth");
+                    midHealth = true;
+                }
+                else if(!noHealth && dead ) {
+                    dialogueTrigger.displayDialogue("EnemyHit");
+                    noHealth = true;
+                }
+            }
+        }
+
+
+        // Reset dialogues
+        if (current_health >= baseHealth) {
+            firstHit = false;
+            midHealth = false;
+            lowHealth = false;
+            noHealth = false;
+        }
     }
 
     // Get ship health
@@ -132,6 +185,12 @@ public class ShipHealth : MonoBehaviour
         rig.isKinematic = false;
 
         controlScript.canMove = true;
+
+        // Reset dialogue
+        firstHit = false;
+        midHealth = false;
+        lowHealth = false;
+        noHealth = false;
 
         dead = false;
     }
