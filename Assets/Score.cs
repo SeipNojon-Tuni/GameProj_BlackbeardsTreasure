@@ -8,7 +8,7 @@ public class Score : MonoBehaviour
 {   
     public UIHandler scoreboard;
     public GameObject globalVar;
-    private static int score = 0;
+    public static int score = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -38,6 +38,7 @@ public class Score : MonoBehaviour
             else {
                 SceneManager.LoadScene("VictorySceneAnimals");
             }
+
 
         if (scoreboard) {
             scoreboard.AddScore();
