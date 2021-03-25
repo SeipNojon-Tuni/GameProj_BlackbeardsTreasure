@@ -74,9 +74,7 @@ public class ShipHealth : MonoBehaviour
             time += Time.deltaTime;
         }
         if(time > timeSpan && !dead) {
-            dead = true;
-            StartCoroutine(commitDie());
-            time = 0.0f;
+            transform.position = spawn_point;
         }
 
         // Button released
