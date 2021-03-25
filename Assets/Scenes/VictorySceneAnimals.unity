@@ -642,7 +642,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 613859740}
         m_MethodName: ReturnToMenu
         m_Mode: 1
         m_Arguments:
@@ -1307,7 +1307,7 @@ GameObject:
   - component: {fileID: 1992291000}
   - component: {fileID: 1992290999}
   m_Layer: 5
-  m_Name: Image (1)
+  m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1451,7 +1451,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 613859740}
         m_MethodName: QuitGame
         m_Mode: 1
         m_Arguments:
