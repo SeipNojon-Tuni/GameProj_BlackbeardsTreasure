@@ -101,7 +101,6 @@ public class Barrage : MonoBehaviour
             smoke_right.Play();
         }
 
-
         Vector3 offset = new Vector3 (x_off, 0, z_off);
         Vector3 pos = transform.position + transform.TransformDirection(offset);
 

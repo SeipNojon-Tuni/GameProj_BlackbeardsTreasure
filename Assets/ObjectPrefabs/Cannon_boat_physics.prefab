@@ -288,6 +288,7 @@ GameObject:
   - component: {fileID: 1965741846511437213}
   - component: {fileID: 1949911743722061875}
   - component: {fileID: 8063456040400263900}
+  - component: {fileID: 7812805633061056486}
   m_Layer: 0
   m_Name: Cannon_boat_physics
   m_TagString: Ship
@@ -360,6 +361,8 @@ MonoBehaviour:
   effects: {fileID: 1965741846511437213}
   respawn_time: 5
   health_display: {fileID: 0}
+  score: {fileID: 0}
+  treasure: {fileID: 0}
 --- !u!114 &5364602554464077335
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -406,7 +409,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3552767224761659886}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f1b958cbc81694a429ca117c007e13f1, type: 3}
   m_Name: 
@@ -423,7 +426,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3552767224761659886}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e320f74c954567d46b74a6812f5040ea, type: 3}
   m_Name: 
@@ -520,6 +523,31 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rigidBody: {fileID: 4348229228908268112}
+--- !u!114 &7812805633061056486
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3552767224761659886}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae9b62b83106bb241b0148ebeb706b87, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectileVelMult: 5000
+  auso: {fileID: 2028063751619820225}
+  ui: {fileID: 0}
+  primaryProjectile: {fileID: 8935117675067313532, guid: 9df77da220f0e8340a4a674f49e3af5f,
+    type: 3}
+  primaryReloadTime: 1
+  primarySound: {fileID: 8300000, guid: 8dca5262d14d46e4d848815cc7bd8be8, type: 3}
+  secondaryProjectile: {fileID: 1963615377685116304, guid: fe3e0363cdab8b24f85a7a9eb5e55f5a,
+    type: 3}
+  secondaryReloadTime: 6
+  secondarySound: {fileID: 8300000, guid: dd16613ba69286a49828cc208cf79d3e, type: 3}
+  smoke: {fileID: 8154946265450186944}
+  x_offset: 15
 --- !u!1 &4132565364087423832
 GameObject:
   m_ObjectHideFlags: 0
@@ -6172,7 +6200,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8217643771899786328}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 28.06, z: -52.75}
+  m_LocalPosition: {x: 0, y: 53.5, z: -83.2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4181071477067606868}
@@ -6580,6 +6608,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 809670852822544144}
   m_PrefabAsset: {fileID: 0}
+--- !u!198 &8154946265450186944 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 8795731498670434256, guid: 7953a0ca2a7a4324a9d5485167973407,
+    type: 3}
+  m_PrefabInstance: {fileID: 809670852822544144}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2014627098058316689
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6734,15 +6768,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 792eedad4240d4a4d80b47bc8ee36e54, type: 3}
---- !u!198 &4226444282921690166 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 2401047544389140391, guid: 792eedad4240d4a4d80b47bc8ee36e54,
-    type: 3}
-  m_PrefabInstance: {fileID: 2014627098058316689}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &4226444282921690167 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2401047544389140390, guid: 792eedad4240d4a4d80b47bc8ee36e54,
+    type: 3}
+  m_PrefabInstance: {fileID: 2014627098058316689}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &4226444282921690166 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 2401047544389140391, guid: 792eedad4240d4a4d80b47bc8ee36e54,
     type: 3}
   m_PrefabInstance: {fileID: 2014627098058316689}
   m_PrefabAsset: {fileID: 0}

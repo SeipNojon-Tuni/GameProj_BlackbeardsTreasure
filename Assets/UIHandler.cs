@@ -60,13 +60,11 @@ public class UIHandler : MonoBehaviour
             primary.sprite = barrage;
             secondary.sprite = fireBarrage;
 
-            activeWeapon = primary;
         }
         else {
             primary.sprite = cannon;
             secondary.sprite = barrel;
 
-            activeWeapon = secondary;
         }
 
     }
@@ -75,10 +73,14 @@ public class UIHandler : MonoBehaviour
         if(weapon == "Primary") {
             primary.enabled = true;
             secondary.enabled = false;
+            
+            activeWeapon = primary;
         } 
         else {
             primary.enabled = false;
             secondary.enabled = true;
+            
+            activeWeapon = secondary;
         }
 
         if(auso) {
@@ -90,7 +92,7 @@ public class UIHandler : MonoBehaviour
     public void reloadCycle(float time) {
 
         // Enable corresponding empty image.
-        if(activeWeapon = primary) {
+        if(activeWeapon == primary) {
             //primaryEmpty.enabled = true;
             refColor = primary.color;
         }
@@ -99,14 +101,15 @@ public class UIHandler : MonoBehaviour
             refColor = secondary.color;
         }
         
-        StartCoroutine(imageLerp(time));
+        StartCoroutine(imageLerp(activeWeapon, time));
+        
     }
 
-    IEnumerator imageLerp(float time) {
+    IEnumerator imageLerp(Image lastActive, float time) {
 
         for (float ft = 0; ft < time; ft += 0.2f) {
             float current = ft / time;
-            activeWeapon.color = new Color(Mathf.Lerp(0.95f, refColor.r, current), Mathf.Lerp(0.95f, refColor.b, current),  Mathf.Lerp(0.95f, refColor.g, current), Mathf.Lerp(0.5f, 1.0f, current));
+            lastActive.color = new Color(Mathf.Lerp(0.95f, refColor.r, current), Mathf.Lerp(0.95f, refColor.b, current),  Mathf.Lerp(0.95f, refColor.g, current), Mathf.Lerp(0.5f, 1.0f, current));
             yield return new WaitForSeconds(.2f);
         }
 
@@ -116,6 +119,7 @@ public class UIHandler : MonoBehaviour
 
         StartCoroutine(displayReady());
     }
+
 
     IEnumerator displayReady() {
         weaponRdyText.enabled = true;
